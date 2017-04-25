@@ -16,16 +16,17 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @EnableEurekaServer
 @SpringBootApplication
+@RestController
 public class CloudServerApplication {
 
     @Autowired
     DiscoveryClient client;
 
-//    @RequestMapping("/")
-//    public String hello() {
-//        ServiceInstance localInstance = client.getLocalServiceInstance();
-//        return "Hello World: "+ localInstance.getServiceId()+":"+localInstance.getHost()+":"+localInstance.getPort();
-//    }
+    @RequestMapping("/info")
+    public String ServerInfo() {
+        ServiceInstance localInstance = client.getLocalServiceInstance();
+        return "client info : "+ localInstance.getServiceId()+":"+localInstance.getHost()+":"+localInstance.getPort();
+    }
 
     public static void main(String[] args) {
         SpringApplication.run(CloudServerApplication.class, args);

@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/angularjs/angularjs.iml" filepath="$PROJECT_DIR$/angularjs/angularjs.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cloudclient/cloudclient.iml" filepath="$PROJECT_DIR$/cloudclient/cloudclient.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cloudserver/cloudserver.iml" filepath="$PROJECT_DIR$/cloudserver/cloudserver.iml" />
       <module fileurl="file://$PROJECT_DIR$/demo.iml" filepath="$PROJECT_DIR$/demo.iml" />
       <module fileurl="file://$PROJECT_DIR$/linebot/linebot.iml" filepath="$PROJECT_DIR$/linebot/linebot.iml" />
       <module fileurl="file://$PROJECT_DIR$/restservice/restservice.iml" filepath="$PROJECT_DIR$/restservice/restservice.iml" />
