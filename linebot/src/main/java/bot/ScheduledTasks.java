@@ -3,7 +3,6 @@ package bot; /**
  */
 
 import com.linecorp.bot.client.LineMessagingClient;
-import com.linecorp.bot.model.Multicast;
 import com.linecorp.bot.model.PushMessage;
 import com.linecorp.bot.model.message.TextMessage;
 import org.springframework.beans.factory.annotation.Autowired;
