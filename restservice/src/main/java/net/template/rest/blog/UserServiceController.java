@@ -34,7 +34,7 @@ public class UserServiceController {
         log.info("Fetching All User ");
         List<User> users = userService.findAll();
         if (users == null || users.size() == 0) {
-            log.info("User not found : {} records" , users.size());
+            log.info("User not found : {} records", users.size());
             return new ResponseEntity<List<User>>(HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<List<User>>(users, HttpStatus.OK);
@@ -45,7 +45,7 @@ public class UserServiceController {
         log.info("Fetching User with id " + id);
         User user = (User) userService.findById(id);
         if (user == null) {
-            log.info("User with id {} not found" , id);
+            log.info("User with id {} not found", id);
             return new ResponseEntity<User>(HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<User>(user, HttpStatus.OK);
@@ -53,7 +53,7 @@ public class UserServiceController {
 
     @RequestMapping(value = "/dup/", method = RequestMethod.POST)
     public ResponseEntity<Void> checkDuplicateEmail(@RequestBody User user, UriComponentsBuilder ucBuilder) {
-        log.info("Check dupicate with email : {} " , user.getEmail());
+        log.info("Check dupicate with email : {} ", user.getEmail());
         if (userService.isDuplicateEmail(user.getEmail())) {
             log.info("Email {} is duplicate", user.getEmail());
             return new ResponseEntity(HttpStatus.NOT_FOUND);

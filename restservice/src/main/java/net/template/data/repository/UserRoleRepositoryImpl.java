@@ -7,8 +7,6 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-import static net.template.data.model.UserRole.roles;
-
 /**
  * Created by prayoon-pc on 4/10/2017.
  */

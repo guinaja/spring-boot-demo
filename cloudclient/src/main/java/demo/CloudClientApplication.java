@@ -23,15 +23,15 @@ import java.util.List;
 public class CloudClientApplication {
 
 
+    @Autowired
+    private DiscoveryClient discoveryClient;
+
     public static void main(String[] args) {
         SpringApplication.run(CloudClientApplication.class, args);
     }
 
-    @Autowired
-    private DiscoveryClient discoveryClient;
-
     @RequestMapping("/service-instances/{applicationName}")
-    public List<ServiceInstance> serviceInstancesByApplicationName(  @PathVariable String applicationName) {
+    public List<ServiceInstance> serviceInstancesByApplicationName(@PathVariable String applicationName) {
         return this.discoveryClient.getInstances(applicationName);
     }
 
@@ -39,7 +39,7 @@ public class CloudClientApplication {
     @RequestMapping("/info")
     public String ServerInfo() {
         ServiceInstance localInstance = discoveryClient.getLocalServiceInstance();
-        return "client info : "+ localInstance.getServiceId()+":"+localInstance.getHost()+":"+localInstance.getPort();
+        return "client info : " + localInstance.getServiceId() + ":" + localInstance.getHost() + ":" + localInstance.getPort();
     }
 
     @RequestMapping("/getTime")
