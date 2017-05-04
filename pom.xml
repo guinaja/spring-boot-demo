@@ -18,6 +18,7 @@
         <module>msaccountservice</module>
         <module>msweb</module>
         <module>msbaseapp</module>
+        <module>spting-boot-docker</module>
     </modules>
 
 

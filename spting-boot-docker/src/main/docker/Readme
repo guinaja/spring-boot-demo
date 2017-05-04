@@ -1,0 +1,5 @@
+Run
+docker-compose up -d
+
+log mysql
+docker logs -f mysql
