@@ -57,10 +57,10 @@
             <artifactId>spring-boot-starter-cache</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-security</artifactId>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.springframework.boot</groupId>-->
+            <!--<artifactId>spring-boot-starter-security</artifactId>-->
+        <!--</dependency>-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -144,10 +144,11 @@
                     <baseImage>java:8</baseImage>
                     <imageName>target/${project.artifactId}</imageName>
                     <entryPoint>["java", "-jar", "target/${project.build.finalName}.jar"]</entryPoint>
-                    <dockerDirectory>src/main/docker</dockerDirectory>
+                    <!--<dockerDirectory>${basedir}/src/main/docker</dockerDirectory>-->
                     <resources>
                         <resource>
-                            <targetPath>/</targetPath>
+                            <!--remove for build on window os-->
+                            <!--<targetPath>/</targetPath>-->
                             <directory>${project.build.directory}</directory>
                             <include>${project.build.finalName}.jar</include>
                         </resource>
