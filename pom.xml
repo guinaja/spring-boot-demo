@@ -18,7 +18,7 @@
         <module>msaccountservice</module>
         <module>msweb</module>
         <module>msbaseapp</module>
-        <module>spting-boot-docker</module>
+        <module>spring-boot-docker</module>
     </modules>
 
 
