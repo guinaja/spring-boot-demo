@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: cloud-config-server
+logging:
+  levels:
+    org.springframework.boot.env.PropertySourcesLoader: TRACE
+    org.springframework.web: DEBUG
+
