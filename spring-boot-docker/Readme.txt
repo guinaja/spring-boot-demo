@@ -19,3 +19,8 @@ Environment
 phpmyadmin  localhost:8080
 mysql       localhost:3306
 spring-boot localhost:8081
+
+--------------------------------
+Path log spring boot
+--------------------------------
+Container :/app/logs/  -> local : /docker/logs
