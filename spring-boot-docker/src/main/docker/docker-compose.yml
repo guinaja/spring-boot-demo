@@ -31,6 +31,7 @@ services:
     image: java:8
     volumes:
         - ./spring-boot-docker.jar:/app/spring-boot-docker.jar
+        - ./logs:/app/logs/
     command: java -jar /app/spring-boot-docker.jar
     depends_on:
       - mysql
