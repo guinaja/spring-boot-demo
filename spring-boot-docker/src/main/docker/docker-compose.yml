@@ -5,8 +5,9 @@ services:
     image: mysql:latest
     container_name: mysql
     volumes:
-      - ./data:/docker-entrypoint-initdb.d/
- #     - ./tmp:/var/lib/mysql
+      - ./mysql-data:/docker-entrypoint-initdb.d/
+      - ./mysql-logs:/var/log/mysql
+      - ./mysql-conf:/etc/mysql/conf.d
     environment:
       - MYSQL_ROOT_PASSWORD=pass
       - MYSQL_DATABASE=world
@@ -31,7 +32,7 @@ services:
     image: java:8
     volumes:
         - ./spring-boot-docker.jar:/app/spring-boot-docker.jar
-        - ./logs:/app/logs/
+        - ./app-logs:/app/logs/
     command: java -jar /app/spring-boot-docker.jar
     depends_on:
       - mysql

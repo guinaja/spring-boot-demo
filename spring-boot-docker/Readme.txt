@@ -45,7 +45,7 @@ Logstash config bat file
 set LS_HOME="D:\APPSERVER\ELK\logstash-5.4.0"
 
 *reference to external config file
-logstash.bat -f D:\projects\JAVA\JAVA-INTELLIJ\demo\spring-boot-docker\src\main\resources\logstash\logstash-custom.conf
+logstash.bat -f D:\_WORK\project-intelliJ\spring-boot-demo\spring-boot-docker\src\main\resources\logstash\logstash-custom.conf
 
 refresh spring boot / check log console
 http://localhost:9600

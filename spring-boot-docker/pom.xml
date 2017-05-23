@@ -144,7 +144,6 @@
                     <baseImage>java:8</baseImage>
                     <imageName>target/${project.artifactId}</imageName>
                     <entryPoint>["java", "-jar", "target/${project.build.finalName}.jar"]</entryPoint>
-                    <!--<dockerDirectory>${basedir}/src/main/docker</dockerDirectory>-->
                     <resources>
                         <resource>
                             <!--remove for build on window os-->
@@ -168,7 +167,7 @@
                 <artifactId>maven-antrun-plugin</artifactId>
                 <configuration>
                     <tasks>
-                        <copy file="${basedir}/target/docker/${project.build.finalName}.jar" tofile="${basedir}/src/main/docker/${project.build.finalName}.jar" />
+                        <copy file="${basedir}/target/${project.build.finalName}.jar" tofile="${basedir}/src/main/docker/${project.build.finalName}.jar" />
                     </tasks>
                 </configuration>
                 <executions>
