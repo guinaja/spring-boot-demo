@@ -26,6 +26,9 @@ Path log spring boot
 Container :/app/logs/  -> local : /docker/logs
 
 
+
+
+
 --------------------------------
 ElasticSearch config bat file
 --------------------------------
@@ -53,7 +56,23 @@ http://localhost:9600
 --------------------------------
 Kibana
 --------------------------------
-
 kibana.bat
 
 http://localhost:5601
+
+
+----------------------------------------------------------------
+install x-pack plugin
+https://www.elastic.co/guide/en/x-pack/current/installing-xpack.html#xpack-installing-offline
+
+https://artifacts.elastic.co/downloads/packs/x-pack/x-pack-5.4.0.zip (sha1)
+
+elasticsearch-plugin install file:///C:/Users/prayoon-pc/Desktop/x-pack-5.4.0.zip
+
+kibana-plugin install file:///C:/Users/prayoon-pc/Desktop/x-pack-5.4.0.zip
+
+logstash-plugin install file:///C:/Users/prayoon-pc/Desktop/x-pack-5.4.0.zip
+
+username : elastic
+password : changeme
+----------------------------------------------------------------
