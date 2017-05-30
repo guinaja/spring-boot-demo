@@ -1,0 +1,6 @@
+cluster.name: demo-application
+node.name:  localhost
+network.host: prayoon-pc
+http.port: 9200
+path.data: D:\projects\JAVA\JAVA-INTELLIJ\demo\spring-boot-docker-app1\src\main\resources\elasticsearch\data
+path.logs: D:\projects\JAVA\JAVA-INTELLIJ\demo\spring-boot-docker-app1\src\main\resources\elasticsearch\log

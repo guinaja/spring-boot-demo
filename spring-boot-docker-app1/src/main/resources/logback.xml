@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/base.xml"/>
+    <include resource="org/springframework/boot/logging/logback/console-appender.xml"/>
+    <!--<include resource="org/springframework/boot/logging/logback/file-appender.xml"/>-->
+    <logger name="org.springframework" level="WARN"/>
+    <logger name="org.hibernate.SQL" level="DEBUG"/>
+    <logger name="demo.example" level="DEBUG"/>
+
+    <appender name="ROLLINGFILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>/app/logs/app.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>/app/logs/app.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>1</maxHistory>
+            <totalSizeCap>5MB</totalSizeCap>
+            <cleanHistoryOnStart>true</cleanHistoryOnStart>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${FILE_LOG_PATTERN}</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Setting the root level of logging to INFO -->
+    <root level="INFO">
+        <appender-ref ref="ROLLINGFILE"/>
+        <appender-ref ref="CONSOLE"/>
+    </root>
+    <root level="ERROR">
+        <appender-ref ref="ROLLINGFILE"/>
+        <appender-ref ref="CONSOLE"/>
+    </root>
+</configuration>

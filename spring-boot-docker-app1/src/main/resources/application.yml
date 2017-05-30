@@ -1,0 +1,31 @@
+spring:
+#  for standlone
+#  datasource:
+#    url: jdbc:mysql://127.0.0.1:3306/world
+#    username: root
+#    password: pass
+#    platform: mysql
+#    initialize: false
+
+#   for docker
+  profiles: container
+  datasource:
+    url: jdbc:mysql://${MYSQL_PORT_3306_TCP_ADDR}:${MYSQL_PORT_3306_TCP_PORT}/${MYSQL_ENV_MYSQL_DATABASE}
+    username: ${MYSQL_ENV_MYSQL_USER}
+    password: ${MYSQL_ENV_MYSQL_PASSWORD}
+    initialize: true
+  jpa:
+    database-platform: org.hibernate.dialect.MySQLDialect
+  application:
+    name: spring-boot-docker-app1
+
+logging:
+#  pattern:
+#    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread]  %logger{0} - %msg%n"
+#    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread]  %logger{0} - %msg%n"
+  level:
+    ROOT: INFO 
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql: TRACE
+    org.springframework: INFO
+    demo.example: DEBUG
