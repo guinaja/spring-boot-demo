@@ -18,7 +18,8 @@
         <module>msaccountservice</module>
         <module>msweb</module>
         <module>msbaseapp</module>
-        <module>spring-boot-docker</module>
+        <module>spring-boot-docker-app1</module>
+        <module>spring-boot-docker-app2</module>
     </modules>
 
 
