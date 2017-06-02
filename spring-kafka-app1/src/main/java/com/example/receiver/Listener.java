@@ -19,7 +19,7 @@ public class Listener {
         return latch;
     }
 
-    @KafkaListener(topics = "${topic.demo}" )
+    @KafkaListener(topics = "${topic.demo}" , group ="${spring.kafka.consumer.group-id}")
     public void receive(ConsumerRecord<?, ?> consumerRecord) {
         log.info("received data='{}'", consumerRecord.toString());
         latch.countDown();
