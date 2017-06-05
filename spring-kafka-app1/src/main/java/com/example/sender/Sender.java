@@ -16,8 +16,8 @@ public class Sender {
     @Autowired
     private KafkaTemplate<String, String> kafkaTemplate;
 
-    public void send(String topic, String data) {
+    public void send(String topic,String partition, String data) {
         log.info("sending data='{}' to topic='{}'", data, topic);
-        kafkaTemplate.send(topic,  System.currentTimeMillis() + topic , data );
+        kafkaTemplate.send(topic,  partition , data );
     }
 }

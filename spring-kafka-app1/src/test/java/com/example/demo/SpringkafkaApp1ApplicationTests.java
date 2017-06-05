@@ -18,7 +18,7 @@ public class SpringkafkaApp1ApplicationTests {
 	private Sender sender;
 	@Test
 	public void contextLoads() {
-		sender.send(TOPIC_NAME, "Hello Spring Kafka!");
+		sender.send(TOPIC_NAME, "0","Hello Spring Kafka!");
 	}
 
 }

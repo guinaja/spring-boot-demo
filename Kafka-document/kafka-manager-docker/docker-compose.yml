@@ -1,41 +1,48 @@
 # Docker compose to have Zookeeper, Kafka, and Kafka Manager running for development.
 # Provided by @prayoon-su
-zookeeper:
-  image: zookeeper
-  restart: always
-  ports:
-    - "2181:2181"
-  volumes:
-    - ./zookeeper/conf:/conf/
+version: '2'
+services:
+  zookeeper:
+    image: zookeeper
+    restart: always
+    ports:
+      - "2181:2181"
+#    volumes:
+#      - ./zookeeper/conf:/conf/
+  kafka:
+    image: wurstmeister/kafka:latest
+    ports:
+      - "9092:9092"
+    links:
+      - zookeeper:zk
+    depends_on:
+      - zookeeper
+    environment:
+      KAFKA_ADVERTISED_HOST_NAME: localhost
+      KAFKA_ADVERTISED_PORT: 9092
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: 'true'
+      KAFKA_CREATE_TOPICS: "FIRST-TOPIC:1:1,SECOND-TOPIC:1:1"
+      KAFKA_ZOOKEEPER_CONNECT: zk:2181
 
-kafka:
-  image: wurstmeister/kafka:latest
-  ports:
-    - "9092:9092"
-  links:
-    - zookeeper:zk
-  environment:
-    - KAFKA_ADVERTISED_HOST_NAME=localhost
-    - KAFKA_ADVERTISED_PORT=9092
-    - KAFKA_DELETE_TOPIC_ENABLE=true
-    - KAFKA_LOG_RETENTION_HOURS=1
-    - KAFKA_MESSAGE_MAX_BYTES=10000000
-    - KAFKA_REPLICA_FETCH_MAX_BYTES=10000000
-    - KAFKA_GROUP_MAX_SESSION_TIMEOUT_MS=60000
-    - KAFKA_NUM_PARTITIONS=2
-    - KAFKA_DELETE_RETENTION_MS=1000
-    - JMX_PORT=9997
+#    volumes:
+#      - /var/run/docker.sock:/var/run/docker.sock
+#     If i try docker-compose scale kafka=2 I get this error:
 
-kafka-manager:
-  image: crobox/kafka-manager:latest
-  ports:
-    - "9000:9000"
-  links:
-    - zookeeper
-    - kafka
-  environment:
-    ZK_HOSTS: zookeeper:2181
-    APPLICATION_SECRET: letmein
-    KM_ARGS: -Djava.net.preferIPv4Stack=true
-  volumes:
-    - ./kafka/config:/kafka/config/
+
+
+  kafka-manager:
+    image: crobox/kafka-manager:latest
+    ports:
+      - "9000:9000"
+    links:
+      - zookeeper
+      - kafka
+    depends_on:
+      - zookeeper
+      - kafka
+    environment:
+      ZK_HOSTS: zookeeper:2181
+      APPLICATION_SECRET: letmein
+      KM_ARGS: -Djava.net.preferIPv4Stack=true
+#    volumes:
+#      - ./kafka/config:/kafka/config/

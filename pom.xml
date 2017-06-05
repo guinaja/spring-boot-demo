@@ -20,6 +20,7 @@
         <module>msbaseapp</module>
         <module>spring-boot-docker-app1</module>
         <module>spring-boot-docker-app2</module>
+        <module>spring-kafka-app1</module>
     </modules>
 
 
