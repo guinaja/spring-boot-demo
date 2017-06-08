@@ -16,27 +16,36 @@ angular.module('myApp').factory('UserService', ['$http', '$q', function ($http, 
 
     return factory;
 
-    function createUser() {}
-    function updateUser() {}
-    function deleteUser() {}
+    function createUser() {
+    }
 
-    function isDupEmail(user) {
+    function updateUser() {
+    }
+
+    function deleteUser() {
+    }
+
+    function isDupEmail($scope, user) {
         user.id = 0;
         console.log("isDupEmail - " + REST_SERVICE_URI + 'dup');
         var deferred = $q.defer();
-        $http.post(REST_SERVICE_URI + 'dup/',user)
+        $http.post(REST_SERVICE_URI + 'dup/', user)
             .then(
                 function (response) {
                     console.log(response.data);
                     deferred.resolve(response.data);
-                },
-                function (errResponse) {
-                    console.error('Error while check duplicate Email');
-                    deferred.reject(errResponse);
+                    handlerSuccess($scope, response);
+                }, function (response) {
+                    handlerException($scope, response);
                 }
-            );
+            ).catch(function (data, status) {
+                console.error('Gists error', response.status, response.data);
+            }).finally(function () {
+                console.log("finally finished gists");
+            });
         return deferred.promise;
     }
+
     function fetchAllUsers() {
         console.log("fetchAllUsers - " + REST_SERVICE_URI + 'findAll');
         var deferred = $q.defer();
@@ -46,10 +55,9 @@ angular.module('myApp').factory('UserService', ['$http', '$q', function ($http, 
                 function (response) {
                     console.log(response.data);
                     deferred.resolve(response.data);
-                },
-                function (errResponse) {
-                    console.error('Error while fetching Users');
-                    deferred.reject(errResponse);
+                    handlerSuccess($scope, response);
+                }, function (response) {
+                    handlerException($scope, response);
                 }
             );
         return deferred.promise;

@@ -24,7 +24,7 @@ angular.module('myApp').controller('UserController', ['$scope', 'UserService', f
     self.checkDupEmail = checkDupEmail;
 
     function checkDupEmail() {
-        UserService.isDupEmail(self.user);
+        UserService.isDupEmail($scope,self.user);
     }
 
 

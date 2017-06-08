@@ -11,3 +11,13 @@ function removeArray(arr) {
     }
     return arr;
 }
+
+function handlerException($scope, response){
+        console.log(response);
+        $scope.responseMessage.msgCode = 'error';
+        $scope.responseMessage.msgDesc = 'Error can\'t connect server';
+}
+function handlerSuccess($scope, response) {
+    $scope.responseMessage.msgCode = 'success';
+    $scope.responseMessage.msgDesc = '';
+}

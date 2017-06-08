@@ -11,4 +11,12 @@ angular.module('myApp', [
     $locationProvider.hashPrefix('!');
 
     $routeProvider.otherwise({redirectTo: '/view1'});
-}]);
+}]).
+controller('driversController', function($scope) {
+    $scope.responseMessage = {msgCode: null, msgDesc: ''};
+
+    $scope.appInfo = {name: null, version: ''};
+    $scope.appInfo.name = 'AngularJS';
+    $scope.appInfo.version = angular.version.full;
+
+});
