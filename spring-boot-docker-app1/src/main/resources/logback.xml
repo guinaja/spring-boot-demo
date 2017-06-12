@@ -11,18 +11,31 @@
         <file>/app/logs/app.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <fileNamePattern>/app/logs/app.%d{yyyy-MM-dd}.log</fileNamePattern>
-            <maxHistory>1</maxHistory>
-            <totalSizeCap>5MB</totalSizeCap>
+            <!-- keep 5 days' worth of history capped at 100MB [???GB] total size -->
+            <maxHistory>10</maxHistory>
+            <totalSizeCap>1GB</totalSizeCap>
             <cleanHistoryOnStart>true</cleanHistoryOnStart>
         </rollingPolicy>
         <encoder>
+            <!--%d{yyyy-MM-dd HH:mm} %5p ${PID:- } -&#45;&#45; [%t] %-40.40logger{39} : %m%n%wex-->
             <pattern>${FILE_LOG_PATTERN}</pattern>
         </encoder>
     </appender>
 
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <!-- encoders are assigned the ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <root level="DEBUG">
+        <appender-ref ref="STDOUT"/>
+    </root>
+
+
     <!-- Setting the root level of logging to INFO -->
     <root level="INFO">
-        <appender-ref ref="ROLLINGFILE"/>
         <appender-ref ref="CONSOLE"/>
     </root>
     <root level="ERROR">
